@@ -36,9 +36,9 @@ class UserService(rpyc.Service):
                 upload = username + "\n" + password + "\n"
                 file.write(upload)
                 file.close()
-                return True
+                return str(username)
             
-        return False
+        return False 
 
 
 
