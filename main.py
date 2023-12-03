@@ -1,43 +1,25 @@
 import tkinter as tk
 from tkinter import messagebox
-import rpyc
-import ui_login as ui_login_func
+
+from ui_login import UIlogin
+from ui_budget import UIbudget
 
 
-# def close_budget_root_app():
-#     if messagebox.askokcancel("Quit", "Do you want to quit?"):
-#         budget_root.destroy()
-
-
-
-# def open_budget_window():
-#     budget_root.withdraw()
-#     budget_window = tk.Toplevel()
-#     budget_window.protocol("WM_DELETE_WINDOW", close_budget_root_app)
-#     budget_window.title('Budget Overview')
-#     #Today's date
-#     today_label = tk.Label(budget_window, text="12, November, 2023")
-#     today_label.grid(row=0,column=0)
+# root = tk.Tk()
+# ui = UIlogin(root)
+# ui.open_start_window()
+# root.mainloop()
 
 
 
+#i got the name now we move onto csv file and budget view
+# user = ui.get_username()
+# print("user: " + user)
 
-#main application
-
-root = tk.Tk()
-current_window = root
-
-ui = ui_login_func.UIlogin(root)
-ui.open_start_window()
-#after user verification open budget overview
-#root.protocol("WM_DELETE_WINDOW", close_root_app)
-root.mainloop()
-
-#how do I extract what user is loggin in?
-user = ui.get_username()
-print("user: " + user)
+user = "yupdude"
 
 # budget_root = tk.Tk()
-# budget_root.protocol("WM_DELETE_WINDOW", close_budget_root_app)
-# open_budget_window()
+# ui_budget = UIbudget(budget_root, user)
+ui_budget = UIbudget(user)
+
 # budget_root.mainloop()

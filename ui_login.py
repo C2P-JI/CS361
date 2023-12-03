@@ -82,6 +82,7 @@ class UIlogin:
 
         login_button = tk.Button(login_window, text="Login")
         login_button.grid(row=1, column=3, rowspan=2, columnspan=2)
+        # Time to make command for login authentification
 
         new_user_button = tk.Button(login_window, text="New User Regristration",
                                     font=("default", 11), 
@@ -98,10 +99,28 @@ class UIlogin:
             success = conn.root.exposed_add_user(username, password, re_password)
             if success != False:
                 self.user = username
-                #print(self.user)
                 self.quit_app()
+                self.create_user_db(username)
         finally:
             conn.close()
+
+        # open windows to get user_information
+        # catagories wanted
+        # Current income
+        # Current rent
+        # CUrrent bills
+        # etc etc or just skip to main menu and
+        # fill in as they go
+        
+
+    def create_user_db(self, username):
+        conn = rpyc.connect("localhost", port = 18862)
+        try:
+            conn.root.exposed_create_db(username)
+        finally:
+            conn.close()
+
+        
 
     def open_new_user_regristration_window(self):
         new_user_window = tk.Toplevel(self.master)
